@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../controller/auth_controller.dart';
 import '../utils/color.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -24,17 +22,11 @@ class CustomTextField extends StatelessWidget {
   final prefixIcon;
   final suffixIcon;
   final String? returnText;
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    return Obx(()=>   TextFormField(
+    return TextFormField(
       controller: controller,
-      validator: validator ?? (value){
+      validator: (value){
         if (value == null || value.isEmpty){
           return  returnText;
         }else{
@@ -70,6 +62,6 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.95),
           )
       ),
-    ));
+    );
   }
 }

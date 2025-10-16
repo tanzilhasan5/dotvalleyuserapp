@@ -1,3 +1,4 @@
+import 'package:dotvalleyuserapp/controller/auth_controller.dart';
 import 'package:dotvalleyuserapp/ui/utils/color.dart';
 import 'package:dotvalleyuserapp/ui/widgets/customButton.dart';
 import 'package:dotvalleyuserapp/ui/widgets/customChackbox.dart';
@@ -7,6 +8,8 @@ import 'package:dotvalleyuserapp/ui/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
+import '../../routs/routs.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
-                    Center(child: Image(image: AssetImage('assets/auth_Image/Group 474.png')),
+                    Center(child: Image(image: AssetImage('assets/auth_Image/logo.png')),
                     ),
                   ],
                 ),
@@ -121,7 +124,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 ),
                 SizedBox(height: 16,),
-                CustomReachText(context: context, text: 'Don’t Have an Account? ', title: ' Register', ontap: (){}),
+                CustomReachText(context: context, text: 'Don’t Have an Account? ', title: ' Register', ontap: (){
+                  Get.toNamed(Routs.register_Screen);
+                }),
                 SizedBox(height: 16,),
                 CustomReachText(context: context, text: 'Continue as  Guest ', title: ' Guest', ontap: (){
                 }),
