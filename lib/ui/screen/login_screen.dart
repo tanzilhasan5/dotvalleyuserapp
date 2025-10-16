@@ -1,0 +1,141 @@
+import 'package:dotvalleyuserapp/ui/utils/color.dart';
+import 'package:dotvalleyuserapp/ui/widgets/customButton.dart';
+import 'package:dotvalleyuserapp/ui/widgets/customChackbox.dart';
+import 'package:dotvalleyuserapp/ui/widgets/customReachText.dart';
+import 'package:dotvalleyuserapp/ui/widgets/custom_password%20TextField.dart';
+import 'package:dotvalleyuserapp/ui/widgets/custom_text_field.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController passwordCtrl = TextEditingController();
+  final TextEditingController emailCtrl = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: SafeArea(
+          child: Form( key: _formKey,
+            child: Column(
+              children: [
+                SizedBox(height: 76,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Center(child: Image(image: AssetImage('assets/auth_Image/Group 474.png')),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30,),
+                Row( mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(' Email\$ Phone',style: TextStyle(color: Colors.black,fontSize: 16,),),
+                  ],
+                ),
+
+                CustomTextField(
+                  hintText: 'emaill@address,com',
+                  returnText: 'Enter your email',
+                  controller: emailCtrl,
+                ),
+                SizedBox(height: 20,),
+                Row( mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Password',style: TextStyle(color: Colors.black,fontSize: 16,),),
+                  ],
+                ),
+
+                CustomPasswordTextField(
+                    hint: '8+Characters required',
+                  controller: passwordCtrl,
+                  validatorType: ValidatorType.login,
+                ),
+                SizedBox(height: 25,),
+                Row(
+                  children: [
+                    CustomChackBox(),
+                    Spacer(),
+                    Text('Forgot Password?',style: TextStyle(color:AppColor.primaryColors),),
+                  ],
+                ),
+                SizedBox(height: 10,),
+
+                Row(children: [
+                  Flexible(child: Divider(
+                    thickness: 1,
+                  )),
+                  SizedBox(width: 3,),
+                  Text('Or',style: TextStyle(color: Colors.grey,fontSize: 13,fontWeight: FontWeight.bold),),
+                  SizedBox(width: 3,),
+                  Expanded(child: Divider(thickness: 1,)),
+                ],),
+                SizedBox(height: 10,),
+                CustomButton(
+                  customColor: Colors.white,
+                  onpress: (){},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SvgPicture.asset('assets/auth_Image/gmail.svg',),
+
+                      Text('Continue with Gmail',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),)
+                    ],
+                  ),
+                ),
+                SizedBox(height: 15,),
+                CustomButton(
+                  customColor: Colors.white,
+                  onpress: (){},
+                  borderSide: BorderSide(width: 0,color: Colors.grey),
+                  child: Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SvgPicture.asset('assets/auth_Image/facebook..svg',),
+
+                      Text('Continue with Facbook',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),)
+                    ],
+                  ),
+                ),
+                SizedBox(height: 15,),
+
+                CustomButton(
+                  customColor: AppColor.primaryColors,
+                  child: Text('Login ',style: TextStyle(color: Colors.white,fontSize: 16),),
+                  onpress: (){
+                    if (_formKey.currentState!.validate()) {
+                    return null;
+                  }},
+
+                ),
+                SizedBox(height: 16,),
+                CustomReachText(context: context, text: 'Don’t Have an Account? ', title: ' Register', ontap: (){}),
+                SizedBox(height: 16,),
+                CustomReachText(context: context, text: 'Continue as  Guest ', title: ' Guest', ontap: (){
+                }),
+
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  @override
+  void dispose() {
+    emailCtrl.dispose();
+    passwordCtrl.dispose();
+    super.dispose();
+  }
+}
