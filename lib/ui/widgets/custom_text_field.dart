@@ -12,18 +12,15 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.labelText,
-    this.obsecureText=false,
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
     this.returnText,
 
   });
-  final PasswordController passwordController = Get.put(PasswordController());
   final TextEditingController? controller;
   final String? labelText;
   final String? hintText;
-  bool obsecureText;
   final prefixIcon;
   final suffixIcon;
   final String? returnText;
@@ -37,7 +34,6 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(()=>   TextFormField(
       controller: controller,
-      obscureText: passwordController.isHidden.value,
       validator: validator ?? (value){
         if (value == null || value.isEmpty){
           return  returnText;

@@ -50,6 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: emailCtrl,
                 ),
                 SizedBox(height: 20,),
+
                 Row( mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('Password',style: TextStyle(color: Colors.black,fontSize: 16,),),
