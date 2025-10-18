@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../utils/color.dart';
+
+import '../../utils/color.dart';
 
 class CustomTextField extends StatelessWidget {
-  final FormFieldValidator<String>? validator;
+  String? Function(String?)? validator;
+
 
   CustomTextField({
     super.key,
@@ -13,7 +14,6 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
-    this.returnText,
 
   });
   final TextEditingController? controller;
@@ -21,29 +21,23 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final prefixIcon;
   final suffixIcon;
-  final String? returnText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: (value){
-        if (value == null || value.isEmpty){
-          return  returnText;
-        }else{
-          return null;
-        }
-      },
+      validator: validator ,
       decoration:InputDecoration(
           hintText: hintText,hintStyle: TextStyle(color: AppColor.textColor,fontSize: 11.95),
           labelText: labelText,labelStyle: TextStyle(fontSize: 15,color: Colors.black),
           // suffixText: suffixText,suffixStyle: TextStyle(color: AppColor.textColor,fontSize: 11.95),
-          prefixIcon: prefixIcon,prefixIconColor: AppColor.TextFieldColor,
-          suffixIcon:suffixIcon,suffixIconColor: AppColor.TextFieldColor,
+          prefixIcon: prefixIcon,prefixIconColor: AppColor.textColor,
+          suffixIcon:suffixIcon,suffixIconColor: AppColor.textColor,
           enabledBorder: OutlineInputBorder(
+
             borderRadius: BorderRadius.circular(8),
+
             borderSide: BorderSide(
-              color: AppColor.TextFieldColor,  // Border color when not focused
-              width: 2,          // Border width when not focused
+              color: AppColor.TextFieldColor,
             ),
           ),
           // Focused border
@@ -65,3 +59,4 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
+

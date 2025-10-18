@@ -1,12 +1,14 @@
-import 'package:dotvalleyuserapp/ui/utils/color.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controller/auth_controller.dart';
+import '../../../controller/auth_controller.dart';
+import '../../utils/color.dart';
 
 
 class CustomPasswordTextField extends StatelessWidget {
   final String hint;
+  final String lable;
   final TextEditingController? controller;
   final ValidatorType validatorType;
 
@@ -15,12 +17,12 @@ class CustomPasswordTextField extends StatelessWidget {
     this.hint = "Password",
     this.controller,
     this.validatorType = ValidatorType.login,
+    this.lable ='Password',
   }) : super(key: key);
 
   final PasswordController passwordController = Get.put(PasswordController());
 
   String? _validate(String? value) {
-    // Common check
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
     }
@@ -50,8 +52,11 @@ class CustomPasswordTextField extends StatelessWidget {
           return 'Must include at least one special character';
         }
         return null;
+
     }
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +71,7 @@ class CustomPasswordTextField extends StatelessWidget {
       decoration:
       InputDecoration(
         hintText: hint,hintStyle: TextStyle(color: AppColor.textColor,fontSize: 11.95),
-        labelStyle: TextStyle(color: Colors.black,fontSize: 11.95),
-        /*contentPadding: EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: screenWidth < 400 ? 12 : 14,
-        ),*/
+        labelText: lable, labelStyle: TextStyle(color: Colors.black,fontSize: 11.95),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -83,7 +84,7 @@ class CustomPasswordTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColor.TextFieldColor, width: 2),
+          borderSide: BorderSide(color: AppColor.TextFieldColor, width:2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -91,13 +92,14 @@ class CustomPasswordTextField extends StatelessWidget {
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.red, width: 2),
+          borderSide: BorderSide(color: AppColor.TextFieldColor, width: 0),
         ),
+
         suffixIcon: IconButton(
           icon: Icon(
             passwordController.isHidden.value
                 ? Icons.visibility_off
-                : Icons.visibility,
+                : Icons.visibility, color: AppColor.textColor,size: 18,
           ),
           onPressed: passwordController.togglePassword,
         ),
@@ -105,7 +107,6 @@ class CustomPasswordTextField extends StatelessWidget {
     ));
   }
 }
-// 📁 utils/validator_type.dart
 enum ValidatorType {
   login,
   signup,
