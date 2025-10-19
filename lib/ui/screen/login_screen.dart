@@ -25,10 +25,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: SafeArea(
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formKey,
             child: Column(
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-
+          
                 CustomTextField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: emailCtrl,
                 ),
                 SizedBox(height: 20),
-
+          
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -85,8 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-
+          
                 CustomPasswordTextField(
+                  lable: '',
                   hint: '8+Characters required',
                   controller: passwordCtrl,
                   validatorType: ValidatorType.login,
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: 10),
-
+          
                 Row(
                   children: [
                     Flexible(child: Divider(thickness: 1)),
@@ -128,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SvgPicture.asset('assets/auth_Image/gmail.svg'),
-
+          
                       Text(
                         'Continue with Gmail',
                         style: TextStyle(
@@ -149,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SvgPicture.asset('assets/auth_Image/facebook..svg'),
-
+          
                       Text(
                         'Continue with Facbook',
                         style: TextStyle(
@@ -162,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 15),
-
+          
                 CustomButton(
                   customColor: AppColor.primaryColors,
                   child: Text(
