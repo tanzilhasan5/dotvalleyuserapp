@@ -1,5 +1,6 @@
 
 import 'package:dotvalleyuserapp/ui/screen/login_screen.dart';
+import 'package:dotvalleyuserapp/ui/screen/mainbuttomScreen.dart';
 import 'package:dotvalleyuserapp/ui/screen/register_screen.dart';
 import 'package:dotvalleyuserapp/ui/screen/spalish_screen2.dart';
 import 'package:dotvalleyuserapp/ui/screen/spalish_screen3.dart';
@@ -13,6 +14,7 @@ class Routs{
   static String login_Screen='/login_Screen';
   static String signup_Screen='/signup_Screen';
   static String register_Screen='/signup_Screen';
+  static String mainButtom_Screen='/mainButtom_Screen';
 }
 List<GetPage> pages=[
   GetPage(name: Routs.spalish_Screen, page: ()=>SpalishScreen()),
@@ -20,4 +22,5 @@ List<GetPage> pages=[
   GetPage(name: Routs.spalish_Screen2, page: ()=>SpalishScreen2()),
   GetPage(name: Routs.spalish_Screen3, page: ()=>SpalishScreen3()),
   GetPage(name: Routs.register_Screen, page: ()=>RegisterScreen()),
+  GetPage(name: Routs.mainButtom_Screen, page: ()=>MainButtomNavber()),
 ];
