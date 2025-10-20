@@ -1,13 +1,14 @@
 import 'package:dotvalleyuserapp/ui/utils/color.dart';
+import 'package:dotvalleyuserapp/ui/widgets/CustomCard/customCard.dart';
 import 'package:dotvalleyuserapp/ui/widgets/CustomCard/list_of_card.dart';
 import 'package:dotvalleyuserapp/ui/widgets/CustomHomeWidgets/catagorySlidder/catagoryslidder.dart';
-import 'package:dotvalleyuserapp/ui/widgets/CustomHomeWidgets/fristslidder/card_slidder_button.dart';
 import 'package:dotvalleyuserapp/ui/widgets/CustomHomeWidgets/custom_Search_Ber.dart';
-import 'package:dotvalleyuserapp/ui/widgets/CustomHomeWidgets/fristslidder/custom_card.dart';
 import 'package:flutter/material.dart';
-import 'package:slide_countdown/slide_countdown.dart';
 
-import '../widgets/CustomHomeWidgets/fristslidder/frist Card.dart';
+
+
+import '../widgets/CustomHomeWidgets/FristCard/card_slidder_button.dart';
+import '../widgets/CustomHomeWidgets/FristCard/frist_card.dart';
 import '../widgets/countDown/countdown.dart';
 
 class Home extends StatefulWidget {
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 10,),
                 Column(
                   children: [
-                    FristSlidder(),
+                   FristCard(),
                     Center(child: SlideButtonPage())
                   ],
                 ),
@@ -63,8 +64,10 @@ class _HomeState extends State<Home> {
                 CatagoryTabBar(),
                 SizedBox(height: 10,),
                 CountDown(),
+                SizedBox(height: 10,),
                 Text('Hurry Up ! The offer is limited. Grab while it lasts',style: TextStyle(color: AppColor.primaryColors,fontSize: 10),),
-                ListOfCard()
+                SizedBox(height: 10,),
+                FlashCard()
 
 
               ],
