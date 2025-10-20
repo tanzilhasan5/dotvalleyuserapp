@@ -7,7 +7,7 @@ import 'package:dotvalleyuserapp/ui/widgets/CustomHomeWidgets/fristslidder/custo
 import 'package:flutter/material.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
-import '../widgets/CustomHomeWidgets/frist Card.dart';
+import '../widgets/CustomHomeWidgets/fristslidder/frist Card.dart';
 import '../widgets/countDown/countdown.dart';
 
 class Home extends StatefulWidget {
@@ -63,20 +63,10 @@ class _HomeState extends State<Home> {
                 CatagoryTabBar(),
                 SizedBox(height: 10,),
                 CountDown(),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text('Hurry Up ! The offer is limited. Grab while it lasts',style: TextStyle(color: AppColor.primaryColors,fontSize: 10),)
-                      ],
-                    ),
-                    ListOfCard(),
-                  ],
-                ),
-                ListOfCard(),
-                ListOfCard(),
-                ListOfCard(),
-                ListOfCard(),
+                Text('Hurry Up ! The offer is limited. Grab while it lasts',style: TextStyle(color: AppColor.primaryColors,fontSize: 10),),
+                ListOfCard()
+
+
               ],
             ),
           ),

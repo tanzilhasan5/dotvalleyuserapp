@@ -11,75 +11,111 @@ class CatagoryTabBar extends StatefulWidget {
 }
 
 class _CatagoryTabBarState extends State<CatagoryTabBar> {
-  int selectedIndex = 0; // track which tab is selected
+  int selectedIndex = 0;
 
-  final List<String> tabs =
-  ['Men’s Fashion', 'Kid’s Fashion', 'Health &Beauty', 'Women’sFashion'];
-  final List<String> driscription =
-  ['Shits, pants\nShoes & more', 'Trendy & comfy\nfor kids', 'Skincare, wellness,\n more', 'Dresses,tops,\naccessories'];
-  final List<String> image = [
-    'assets/catagoryCard/catagory1.svg',
-    'assets/catagoryCard/catagory1.svg',
-    'assets/catagoryCard/catagory1.svgg',
-    'assets/catagoryCard/catagory1.svg',
+  final List<Map<String, dynamic>> tabs = [
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+    {
+      'title': 'Men’s Fashion',
+      'description': 'Shits, pants\nShoes & more',
+      'image': 'assets/CardImage/card1.png'
+    },
+  ];// track which tab is selected
 
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(tabs.length, (index) {
-          final isSelected = index == selectedIndex;
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                }) ;},
+    return  SizedBox(
+      height: 60,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index){
+            final Tabs=tabs[index];
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(tabs.length, (index) {
+                final isSelected = index == selectedIndex;
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      }) ;},
 
-              child: Container(
-                decoration: BoxDecoration(
-                  color:  isSelected
-                      ? Colors.white70
-                      : Color(0xffFDF1F1),
-                  borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color:  isSelected
+                            ? Colors.white70
+                            : Color(0xffFDF1F1),
+                        borderRadius: BorderRadius.circular(10),
 
-                ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(image[index],height: 50,width: 50,),
-                    SizedBox(width: 20,
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                              Tabs['image'],
+                            height: 60,
+                            width: 60,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(width: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                Tabs['title'],
+                                style: TextStyle(
+                                  color: isSelected ? Colors.black87 : Colors.black87,
+                                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                ),
+                              ),
+                              Text(
+                                Tabs['description'],
+                                style: TextStyle(
+                                  color: isSelected ? AppColor.textColor : AppColor.textColor,
+                                  fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                   Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       Text(
-                         tabs[index],
-                         style: TextStyle(
-                           color: isSelected ? Colors.black87 : Colors.black87,
-                           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                         ),
-                       ),
-                       Text(
-                         driscription[index],
-                         style: TextStyle(
-                           color: isSelected ? AppColor.textColor : AppColor.textColor,
-                           fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
-                         ),
-                       ),
-                     ],
-                   )
-                  ],
-                ),
-              ),
-            ),
-          );
-        }),
+                  ),
+                );
+              }),
+            );
+          },
+          separatorBuilder: (context, index) => SizedBox(height: 10) ,
+          itemCount: tabs.length
       ),
     );
+
   }
 }

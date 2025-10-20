@@ -18,11 +18,10 @@ class EcommerceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 8,
-      shadowColor: Colors.blue.withOpacity(0.3),
+      elevation: 4,
+      color: Colors.grey.withAlpha(1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
-        padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -30,29 +29,38 @@ class EcommerceCard extends StatelessWidget {
         child:Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(logoimages.toString(),width: 120,height:60 ),
-                SizedBox(height: 4,),
-                Text(title,style: TextStyle(
-                  fontSize: 14.71,fontWeight: FontWeight.w500,color: AppColor.primaryColors,
-                ),),
-                SizedBox(height: 4,),
-                Text(description,style: TextStyle(
-                  fontSize: 8.17,fontWeight: FontWeight.w500,color: AppColor.textColor,),),
-                SizedBox(height: 8,),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                    backgroundColor: AppColor.primaryColors
-                  ),
-                    onPressed: (){}, child: Text('Buy Now!',style: TextStyle(color: Colors.white,),),)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(logoimages.toString(),width: 120,height:30 ),
+                  SizedBox(height: 5,),
+                  Text(title,style: TextStyle(
+                    fontSize: 14.71,fontWeight: FontWeight.w500,color: AppColor.primaryColors,
+                  ),),
+                  Text(description,style: TextStyle(
+                    fontSize: 8.17,fontWeight: FontWeight.w500,color: AppColor.textColor,),),
+                  SizedBox(height: 5,),
+                 Container(
+                   height: 22,
+                   width: 60,
+                   color: AppColor.primaryColors,
+                   child: Center(
+                     child: Text('Buy Now',style: TextStyle(
 
-              ],
+                       fontSize: 10,
+                       fontWeight: FontWeight.w500,
+                       color: Colors.white
+                     ),),
+                   ),
+                 )
 
+                ],
+
+              ),
             ),
-            Image.asset(cardlogoimages.toString())
+            Image.asset(cardlogoimages.toString(),width: 122,height:110 )
           ],
         )
       ),
